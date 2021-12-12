@@ -12,6 +12,7 @@ Solving a problem only requires a couple hundred lines of code (see examples).
 
 Algorithms:
 * Restarting Local Search `restarting_local_search`
+* Iterated Local Search `iterated_local_search`
 
 ## Examples
 
@@ -29,6 +30,7 @@ Running an example:
 mkdir -p data/travellingsalesman/instance
 python3 -m examples.travellingsalesman -a generator -i data/travellingsalesman/instance
 python3 -m examples.travellingsalesman -a restarting_local_search -i data/travellingsalesman/instance_50.json
+python3 -m examples.travellingsalesman -a iterated_local_search -i data/travellingsalesman/instance_50.json
 ```
 
 Update:

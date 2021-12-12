@@ -27,9 +27,9 @@ def restarting_local_search(local_scheme, **parameters):
         initial_solution_ids.append(0)
 
     if verbose:
-        print("==========================-============")
+        print("=======================================")
         print("          Local Search Solver          ")
-        print("==========================-============")
+        print("=======================================")
         print()
         print("Algorithm")
         print("---------")
@@ -37,7 +37,7 @@ def restarting_local_search(local_scheme, **parameters):
         print()
         print("Parameters")
         print("----------")
-        print(f"Minimum number of restarts:  {maximum_number_of_restarts}")
+        print(f"Maximum number of restarts:  {maximum_number_of_restarts}")
         print(f"Seed:                        {seed}")
         print(f"Maximum pool size:           {maximum_pool_size}")
         print(f"Time limit:                  {time_limit}")

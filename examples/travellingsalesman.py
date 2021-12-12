@@ -52,11 +52,10 @@ class Instance:
             n = len(self.locations)
             data = json.load(json_file)
             locations = data["locations"]
-            length = 0
-            location_pred_id = 0
-            for location_id in data["locations"]:
-                length += self.distance(location_pred_id, location_id)
-                location_pred_id = location_id
+            length = sum(self.distance(
+                    locations[pos],
+                    locations[pos + 1])
+                for pos in range(n))
             number_of_locations = len(set(locations))
             number_of_duplicates = len(locations[:-1]) - len(set(locations))
             is_feasible = (
@@ -97,7 +96,7 @@ class LocalScheme:
     def global_cost(self, solution):
         return (solution.length)
 
-    def local_search(self, solution):
+    def local_search(self, solution, perturbation=None):
         n = len(instance.locations)
         while True:
             # print(solution.locations)
@@ -121,16 +120,15 @@ class LocalScheme:
                         pos_1_best = pos_1
                         pos_2_best = pos_2
             if pos_1_best is not None:
-                solution_new = self.Solution()
-                solution_new.locations = []
+                locations = []
                 for p in range(pos_1_best + 1):
-                    solution_new.locations.append(solution.locations[p])
+                    locations.append(solution.locations[p])
                 for p in range(pos_2_best, pos_1_best, -1):
-                    solution_new.locations.append(solution.locations[p])
+                    locations.append(solution.locations[p])
                 for p in range(pos_2_best + 1, n + 1):
-                    solution_new.locations.append(solution.locations[p])
-                solution_new.length = l_new
-                solution = solution_new
+                    locations.append(solution.locations[p])
+                solution.locations = locations
+                solution.length = l_best
                 continue
             break
 
@@ -143,10 +141,38 @@ class LocalScheme:
             self.pos_4 = None
 
     def perturbations(self, solution):
-        pass
+        n = len(instance.locations)
+        moves = []
+        for _ in range(32):
+            edges = random.sample(range(0, n), 4)
+            edges.sort()
+            move = self.Move()
+            move.pos_1 = edges[0]
+            move.pos_2 = edges[1]
+            move.pos_3 = edges[2]
+            move.pos_4 = edges[3]
+            move.global_cost = self.global_cost(solution)
+            moves.append(move)
+        return moves
 
     def apply_move(self, solution, move):
-        pass
+        n = len(instance.locations)
+        locations = []
+        for p in range(move.pos_1 + 1):
+            locations.append(solution.locations[p])
+        for p in range(move.pos_3 + 1, move.pos_4 + 1):
+            locations.append(solution.locations[p])
+        for p in range(move.pos_2 + 1, move.pos_3 + 1):
+            locations.append(solution.locations[p])
+        for p in range(move.pos_1 + 1, move.pos_2 + 1):
+            locations.append(solution.locations[p])
+        for p in range(move.pos_4 + 1, n + 1):
+            locations.append(solution.locations[p])
+        solution.locations = locations
+        solution.length = sum(self.instance.distance(
+                solution.locations[pos],
+                solution.locations[pos + 1])
+            for pos in range(n))
 
     def write(self, solution):
         data = {"locations": solution.locations}
