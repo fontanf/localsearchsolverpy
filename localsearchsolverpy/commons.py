@@ -68,6 +68,8 @@ class SolutionPool:
     def display(self, message, start, verbose):
         if verbose:
             value = self.local_scheme.global_cost(self.best)
+            if type(value) == tuple:
+                value = ', '.join(str(x) for x in value)
             print(
                     '{:>11.3f}'.format(time.time() - start)
                     + '{:>32}'.format(value)

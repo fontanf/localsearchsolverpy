@@ -18,6 +18,8 @@ Algorithms:
 
 [Travelling Salesman Problem](examples/travellingsalesman.py)
 
+[Knapsack Problem](examples/knapsack.py)
+
 ## Usage, running examples from command line
 
 Install

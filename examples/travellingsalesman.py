@@ -82,7 +82,7 @@ class LocalScheme:
         self.instance = instance
 
     def initial_solution(self, initial_solution_id):
-        n = len(instance.locations)
+        n = len(self.instance.locations)
         solution = self.Solution()
         solution.locations = [i for i in range(n)]
         random.shuffle(solution.locations)
@@ -97,7 +97,7 @@ class LocalScheme:
         return (solution.length)
 
     def local_search(self, solution, perturbation=None):
-        n = len(instance.locations)
+        n = len(self.instance.locations)
         while True:
             # print(solution.locations)
             # print(solution.length)
@@ -111,10 +111,10 @@ class LocalScheme:
                     i2 = solution.locations[pos_2]
                     j2 = solution.locations[pos_2 + 1]
                     l_new = (solution.length
-                             - instance.distance(i1, j1)
-                             - instance.distance(i2, j2)
-                             + instance.distance(i1, i2)
-                             + instance.distance(j1, j2))
+                             - self.instance.distance(i1, j1)
+                             - self.instance.distance(i2, j2)
+                             + self.instance.distance(i1, i2)
+                             + self.instance.distance(j1, j2))
                     if l_new < l_best:
                         l_best = l_new
                         pos_1_best = pos_1
@@ -141,7 +141,7 @@ class LocalScheme:
             self.pos_4 = None
 
     def perturbations(self, solution):
-        n = len(instance.locations)
+        n = len(self.instance.locations)
         moves = []
         for _ in range(32):
             edges = random.sample(range(0, n), 4)
@@ -156,7 +156,7 @@ class LocalScheme:
         return moves
 
     def apply_move(self, solution, move):
-        n = len(instance.locations)
+        n = len(self.instance.locations)
         locations = []
         for p in range(move.pos_1 + 1):
             locations.append(solution.locations[p])
