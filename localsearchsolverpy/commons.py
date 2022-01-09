@@ -85,12 +85,3 @@ class SolutionPool:
             print("----------------")
             print(f"Value:                       {value}")
             print("Time:" + " " * 24 + '{:<11.3f}'.format(current_time))
-
-
-def update_move_cost(global_cost, global_cost_cur):
-    if type(global_cost) is not tuple:
-        return global_cost
-    gc = global_cost
-    for pos in range(len(global_cost) - 2):
-        gc[pos] = min(global_cost[pos], global_cost_cur[pos])
-    return gc

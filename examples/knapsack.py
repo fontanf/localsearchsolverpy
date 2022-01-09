@@ -133,7 +133,6 @@ class LocalScheme:
 
     def perturbations(self, solution):
         n = len(self.instance.items)
-        c = self.instance.capacity
         moves = []
         for item_id in range(n):
             w = self.instance.items[item_id].weight
@@ -142,11 +141,11 @@ class LocalScheme:
             move.item_id = item_id
             if solution.items[item_id]:
                 move.global_cost = (
-                        max(0, solution.weight - w - c),
-                        - (solution.profit - p))
+                        max(0, solution.weight - w - self.instance.capacity),
+                        - (solution.profit))
             else:
                 move.global_cost = (
-                        max(0, solution.weight - c),
+                        max(0, solution.weight - self.instance.capacity),
                         - (solution.profit + p))
             moves.append(move)
         return moves

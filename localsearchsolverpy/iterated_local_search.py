@@ -1,4 +1,4 @@
-from .commons import SolutionPool, update_move_cost
+from .commons import SolutionPool
 
 import time
 import copy
@@ -102,10 +102,6 @@ def iterated_local_search(local_scheme, **parameters):
         initial_solutions_tmp.pop()
         perturbation_id = 0
         perturbations = local_scheme.perturbations(solution)
-        global_cost_cur = local_scheme.global_cost(solution)
-        for move in perturbations:
-            move.global_cost = update_move_cost(
-                    move.global_cost, global_cost_cur)
         # Sort moves.
         perturbations.sort(key=lambda move: move.global_cost)
         depth = 1
@@ -121,10 +117,6 @@ def iterated_local_search(local_scheme, **parameters):
                 perturbation_id = 0
                 depth += 1
                 perturbations = local_scheme.perturbations(solution)
-                global_cost_cur = local_scheme.global_cost(solution)
-                for move in perturbations:
-                    move.global_cost = update_move_cost(
-                            move.global_cost, global_cost_cur)
                 # Sort moves.
                 perturbations.sort(key=lambda move: move.global_cost)
 
