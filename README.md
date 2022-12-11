@@ -4,6 +4,10 @@ A solver based on local search.
 
 This is the Python3 version of the C++ package [fontanf/localsearchsolver](https://github.com/fontanf/localsearchsolver).
 
+![localsearch](img/localsearch.jpg?raw=true "localsearch")
+
+[image source](https://commons.wikimedia.org/wiki/File:Chocolate_Hills_overview.JPG)
+
 ## Description
 
 The goal of this repository is to provide a simple framework to quickly implement algorithms based on local search.
