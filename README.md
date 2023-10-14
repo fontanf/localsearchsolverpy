@@ -1,4 +1,4 @@
-# Local Search Solver (Python)
+# Local search solver (Python)
 
 A solver based on local search.
 
@@ -15,14 +15,14 @@ The goal of this repository is to provide a simple framework to quickly implemen
 Solving a problem only requires a couple hundred lines of code (see examples).
 
 Algorithms:
-* Restarting Local Search `restarting_local_search`
-* Iterated Local Search `iterated_local_search`
+* Restarting local search `restarting_local_search`
+* Iterated local search `iterated_local_search`
 
 ## Examples
 
-[Travelling Salesman Problem](examples/travellingsalesman.py)
+[Travelling salesman problem](examples/travellingsalesman.py)
 
-[Knapsack Problem](examples/knapsack.py)
+[Knapsack problem](examples/knapsack.py)
 
 ## Usage, running examples from command line
 

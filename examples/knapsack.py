@@ -1,4 +1,4 @@
-"""A local scheme example for the Knapsack Problem.
+"""A local scheme example for the knapsack problem.
 
 Usage:
 
