@@ -33,12 +33,12 @@ def iterated_local_search(local_scheme, **parameters):
 
     if verbose:
         print("=======================================")
-        print("          Local Search Solver          ")
+        print("           LocalSearchSolver           ")
         print("=======================================")
         print()
         print("Algorithm")
         print("---------")
-        print("Iterated Local Search")
+        print("Iterated local search")
         print()
         print("Parameters")
         print("----------")

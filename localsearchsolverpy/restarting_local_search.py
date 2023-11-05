@@ -28,12 +28,12 @@ def restarting_local_search(local_scheme, **parameters):
 
     if verbose:
         print("=======================================")
-        print("          Local Search Solver          ")
+        print("           LocalSearchSolver           ")
         print("=======================================")
         print()
         print("Algorithm")
         print("---------")
-        print("Restarting Local Search")
+        print("Restarting local search")
         print()
         print("Parameters")
         print("----------")

@@ -1,4 +1,4 @@
-# Local search solver (Python)
+# LocalSearchSolver (Python)
 
 A solver based on local search.
 
